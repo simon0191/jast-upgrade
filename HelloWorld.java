@@ -1,4 +1,2 @@
-
 public @interface HelloWorld {
-
 }

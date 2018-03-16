@@ -1,4 +1,7 @@
 #/bin/bash
 
-javac -classpath $JAVA_HOME/lib/tools.jar ForceAssertions.java && \
-javac -processor ForceAssertions -printsource -d gen Example.java ; cat gen/Example.java
+javac -classpath "$JAVA_HOME/lib/*:." ForceAssertions.java
+javac -classpath . -processor ForceAssertions -printsource -d gen Example.java
+cat gen/Example.java
+javac -classpath . -processor ForceAssertions Example.java
+java Example

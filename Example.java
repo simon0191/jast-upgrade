@@ -8,14 +8,20 @@ public class Example {
    * static method comment
    */
   public static void main(String[] args) {
-    String str = null;
-    assert str != null : "Must not be null";
+    System.out.println(blah());
   }
 
   /**
-   *  method comment
+   *{
+   *  "hello" : "world",
+   *  "blah" : [1, 2, 3],
+   *  "four" : {
+   *    "x" : "y"
+   *  }
+   *}
    */
-  public int blah() {
-    return 5;
+  @HelloWorld
+  public static String blah() {
+    return "";
   }
 }
