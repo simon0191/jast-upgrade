@@ -1,0 +1,10 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile files("${System.getProperty('java.home')}/../lib/tools.jar")
+}

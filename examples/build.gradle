@@ -1,0 +1,20 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile project(':processors')
+}
+
+compileJava {
+  options.compilerArgs = [
+    "-processor",
+    "pw.smn.jastupgrade.processors.StringFromCommentProcessor"
+  ]
+}
+
+mainClassName = "pw.smn.jastupgrade.examples.StringFromCommentExample"

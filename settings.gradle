@@ -1,0 +1,4 @@
+rootProject.name = 'jastupgrade'
+
+include ':examples'
+include ':processors'

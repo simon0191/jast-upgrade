@@ -1,4 +1,0 @@
-@HelloWorld
-public class Dummy {
-  
-}

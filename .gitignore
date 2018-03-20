@@ -1,3 +1,11 @@
 *.class
 .idea/
 gen/
+.DS_Store
+.classpath
+.project
+.gradle/
+.settings/
+.vscode/
+*/build/
+*/bin/
