@@ -9,3 +9,5 @@ gen/
 .vscode/
 */build/
 */bin/
+build/
+*.iml

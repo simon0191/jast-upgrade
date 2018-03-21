@@ -39,7 +39,7 @@ public class StringFromCommentProcessor extends AbstractProcessor {
     super.init(env);
     trees = Trees.instance(env);
     docTrees = DocTrees.instance(env);
-    Context context = ((JavacProcessingEnvironment)env).getContext();
+    Context context = ((JavacProcessingEnvironment) env).getContext();
     make = TreeMaker.instance(context);
     annotated = 0;
   }
@@ -47,17 +47,20 @@ public class StringFromCommentProcessor extends AbstractProcessor {
   @Override
   public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
     if (!roundEnv.processingOver()) {
-      Set<? extends Element> annotatedElements = roundEnv.getElementsAnnotatedWith(StringFromComment.class);
+      Set<? extends Element> annotatedElements =
+          roundEnv.getElementsAnnotatedWith(StringFromComment.class);
       for (Element each : annotatedElements) {
         if (each.getKind() == ElementKind.METHOD) {
-          annotated ++;
+          annotated++;
           DocCommentTree docTree = docTrees.getDocCommentTree(trees.getPath(each));
           String str = "";
-          if(docTree != null) {
+          if (docTree != null) {
             str = docTree.getFirstSentence().toString();
             processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE, "Comment found: " + str);
           } else {
-            processingEnv.getMessager().printMessage(Diagnostic.Kind.WARNING, "Comment not found in annotated method");
+            processingEnv
+                .getMessager()
+                .printMessage(Diagnostic.Kind.WARNING, "Comment not found in annotated method");
           }
           JCTree tree = (JCTree) trees.getTree(each);
           TreeTranslator visitor = new Inliner(str);
@@ -65,13 +68,16 @@ public class StringFromCommentProcessor extends AbstractProcessor {
         }
       }
     } else {
-      processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE, annotated + " annotated elements.");
+      processingEnv
+          .getMessager()
+          .printMessage(Diagnostic.Kind.NOTE, annotated + " annotated elements.");
     }
     return false;
   }
 
   private class Inliner extends TreeTranslator {
     private String str;
+
     Inliner(String str) {
       this.str = str;
     }
@@ -82,7 +88,5 @@ public class StringFromCommentProcessor extends AbstractProcessor {
       methodDef.body = make.Block(0, List.of(make.Return(make.Literal(str))));
       this.result = methodDef;
     }
-
   }
-
 }
