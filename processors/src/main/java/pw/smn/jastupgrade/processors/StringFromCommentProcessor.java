@@ -77,7 +77,7 @@ public class StringFromCommentProcessor extends AbstractProcessor {
 
   private class Inliner extends TreeTranslator {
     private String str;
-
+    
     Inliner(String str) {
       this.str = str;
     }

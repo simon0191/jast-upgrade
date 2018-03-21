@@ -7,8 +7,8 @@ dependencies {
 compileJava {
   options.compilerArgs = [
     "-processor",
-    "pw.smn.jastupgrade.processors.StringFromCommentProcessor"
+    "pw.smn.jastupgrade.processors.StringFromCommentProcessor,pw.smn.jastupgrade.processors.DebugLabelRemoverProcessor"
   ]
 }
 
-mainClassName = "pw.smn.jastupgrade.examples.StringFromCommentExample"
+mainClassName = "pw.smn.jastupgrade.examples.Example"
