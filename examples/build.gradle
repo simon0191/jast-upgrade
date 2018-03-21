@@ -1,7 +1,7 @@
 apply plugin: 'application'
 
 dependencies {
-  compile project(':processors')
+  compileOnly project(':processors')
 }
 
 compileJava {
